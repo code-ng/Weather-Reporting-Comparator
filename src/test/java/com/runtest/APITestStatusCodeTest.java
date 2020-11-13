@@ -32,19 +32,21 @@ import io.restassured.path.json.JsonPath;
 
 
 
-public class APITest{
-	private static Logger log = LogManager.getLogger(APITest.class.getName());
+public class APITestStatusCodeTest{
+	private static Logger log = LogManager.getLogger(APITestStatusCodeTest.class.getName());
 	ExcelOperation excel = new ExcelOperation();
 	BaseClass base= new BaseClass();
+	String key = base.getPropertyValue("key");
+	String valueUnit = base.getPropertyValue("valueUnit");
+	String cityName = base.getPropertyValue("cityName");
+	String getDataOf = base.getPropertyValue("getDataOf");
+	String uril= base.getPropertyValue("uril");
+	String tempValue = base.getPropertyValue("tempValue");
+	String cName = base.getPropertyValue("cName");
+	
+	@Test(description="API StatuCode Negative validation from openweathemap.com")
+	public void openWeatherTemperatureStatusTest() throws IOException {		
 
-	@Test(groups="api",description="API Test from openweathemap.com")
-	public void openWeatherTemperatureTest() throws IOException {		
-		String key = base.getPropertyValue("key");
-		String valueUnit = base.getPropertyValue("valueUnit");
-		String cityName = base.getPropertyValue("cityName");
-		String getDataOf = base.getPropertyValue("getDataOf");
-		String uril= base.getPropertyValue("uril");
-		String tempValue = base.getPropertyValue("tempValue");
 	
 		RestAssured.baseURI =uril ;
 
@@ -55,17 +57,14 @@ public class APITest{
 				.when()
 					.get(getDataOf)
 				.then()
-					.assertThat().log().all().statusCode(200).extract().response().asString();
+					.assertThat().log().all().statusCode(201).extract().response().asString();
 
 		log.info(response);
 		JsonPath js = new JsonPath(response);
 		String tempV = js.getString(tempValue);
 		String city = base.getCityName();
 		String newName = "API_"+city;
-		excel.writeExcel(newName, tempV,"WeatherAPI");
 	}
 
-	
-	
 	
 }

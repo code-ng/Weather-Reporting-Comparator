@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
 import com.base.BaseClass;
 import com.utilitypackage.ExcelOperation;
 
-public class NDTVTest extends BaseClass {
+public class NDTVTestCity2 extends BaseClass {
 
-	private static Logger log = LogManager.getLogger(NDTVTest.class.getName());
+	private static Logger log = LogManager.getLogger(NDTVTestCity2.class.getName());
 	ExcelOperation excel = new ExcelOperation();
 
 	@BeforeTest
@@ -23,22 +23,20 @@ public class NDTVTest extends BaseClass {
 		initiliaze();
 	}
 
-	@Test(groups = "nd",description="API Test from ndtv.com")
-	public void ndtvTemperatureTest() throws Exception {
+	@Test(priority = 5,description="API Test from city Ajmer ndtv.com")
+	public void ndtvCity2TemperatureTest() throws Exception {
 
 		clickElement("menuLink");
 
 		clickElement("weather");
 
-		sendTextValue("cityName", "searchElement");
+		sendTextValue("cityName2", "searchElement");
 
-		selectElement("city");
+		selectElement("city2");
 
-		presenceOfCity("cityName", "cityList");
+		presenceOfCity("cityName2", "cityList");
 
-		captureData("cityName", "tempvalue");
-
-		clickElement("clickCity");
+		clickElement("clickCityAjmer");
 
 		takeScreesnShot(driver);
 
