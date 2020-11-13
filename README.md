@@ -4,13 +4,13 @@ The project is to capture any City Temperature data from ndtv.com and from onewe
 
 # Software & Tools:
 
-*Java  - Programming Language
-*Selenium WebDriver - For UI test
-Maven - Build tool 
-RestAssured - For API testing
-Log4j2 - For log information
-TestNG - For reporting tool
-Eclipse -IDE
+- Java  - Programming Language
+- Selenium WebDriver - For UI test
+- Maven - Build tool 
+- RestAssured - For API testing
+- Log4j2 - For log information
+- TestNG - For reporting tool
+- Eclipse -IDE
 
 
 
