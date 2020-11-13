@@ -50,7 +50,17 @@ The project is to capture any City Temperature data from ndtv.com and from onewe
 - Another alternate way is to open 'cmd' from the project location and execute - 'mvn test'
 - 'testng.xml' - files has 6 test files  divided into 2 sets - one set execute paralley and other in sequence.
 - Post execution result will be stored under 'test-output' folder
-
+- Run from Jenkins follow below steps
+  - Launch jenkins
+  - Go to Jenkins dashboard and select 'new job'
+  - Enter a name in test box and next select freestyle project, select OK.
+  - Click on project and select configure
+  - Enter Description
+  - Under SCM - select Git ,enter repositories
+  - Check - PollSCM - provide time 
+  - Post build aciton to send email notification
+  - Select Appl & Save 
+  - Build Now
 
 
 
