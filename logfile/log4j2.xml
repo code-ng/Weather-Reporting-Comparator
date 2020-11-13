@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ Copyright 2020 Nirupam Ghosh (niupamghosh.blr@gmail.com)
+ SPDX-License-Identifier: MIT
+  -->
+
+<!DOCTYPE xml>
+<Configuration status="WARN">
+
+	<Appenders>
+
+		<RollingFile name="File" 
+			filePattern="logs/${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
+			<PatternLayout>
+				<pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="5 MB" />
+			</Policies>
+
+		</RollingFile>
+
+
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="trace">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Root>
+	</Loggers>
+</Configuration>
