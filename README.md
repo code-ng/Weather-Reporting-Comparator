@@ -25,13 +25,22 @@ The project is to capture any City Temperature data from ndtv.com and from onewe
 
 # Project Structure
 
-src/main/java - contains 3 packages 
+- Folder src/main/java - contains 3 packages 
  - com.base 
-    - BaseClass.java ( contains all This a Base class which holds all the common functionality for performing the test)
+    - BaseClass.java [contains all This a Base class which holds all the common functionality for performing the test]
  - com.utilitypackage 
     - ExcelOperation.java [Generic excel function to read and write]
  - com.weather 
     - CompareData.java [Class to perform temperature value comparison]
+    - Compareresult.java [Comparing functionality]
+- Folder src/com/runtest - contails all test cases.
+- Folder logfile - log4j2.xml
+- Folder driver - contains chromedriver and geckodriver
+- Folder testData - 2 files data.xml and locator.properties
+- testng.xml file
+- config.properties file
+- pom.xml file
+
 
 
 # Execution Steps:
@@ -39,7 +48,8 @@ src/main/java - contains 3 packages
 - Click on 'testng.xml' file and Run As - TestNG Suite
 - Alternate way is to click on pom.xml file and select 'Maven test'
 - Another alternate way is to open 'cmd' from the project location and execute - 'mvn test'
-- 'testng.xml' - files has 6 test files  divided into 2 sets - one set execute paralley and other in sequence
+- 'testng.xml' - files has 6 test files  divided into 2 sets - one set execute paralley and other in sequence.
+- Post execution result will be stored under 'test-output' folder
 
 
 
