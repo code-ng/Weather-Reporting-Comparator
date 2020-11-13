@@ -2,13 +2,25 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 
-<listeners>
-	<listener class-name ="com.test.listener.MyListener"/>
-</listeners>
-  <test thread-count="5" name="Test">
-    <classes>
-      <class name="com.runtest.NDTVTest"/>
-      <class name="com.runtest.APITest"/>
-    </classes>
-  </test> <!-- Test -->
+	<listeners>
+		<listener class-name="com.test.listener.MyListener" />
+	</listeners>
+	<test thread-count="1" name="Test" parallel="classes">
+		<classes>
+			<class name="com.runtest.NDTVTest" />
+			<class name="com.runtest.APITest" />
+			<class name="com.runtest.TestCompare" />
+
+
+		</classes>
+	</test>
+	<test thread-count="1" name="Test1">
+		<classes>
+			<class name="com.runtest.APITestStatusCodeTest" />
+			<class name="com.runtest.APITestNameValidation" />
+			<class name="com.runtest.NDTVTestCity2" />
+		</classes>
+
+	</test>
+	<!-- Test -->
 </suite> <!-- Suite -->

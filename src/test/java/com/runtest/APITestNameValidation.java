@@ -32,19 +32,21 @@ import io.restassured.path.json.JsonPath;
 
 
 
-public class APITest{
-	private static Logger log = LogManager.getLogger(APITest.class.getName());
+public class APITestNameValidation{
+	private static Logger log = LogManager.getLogger(APITestNameValidation.class.getName());
 	ExcelOperation excel = new ExcelOperation();
 	BaseClass base= new BaseClass();
+	String key = base.getPropertyValue("key");
+	String valueUnit = base.getPropertyValue("valueUnit");
+	String cityName = base.getPropertyValue("cityName");
+	String getDataOf = base.getPropertyValue("getDataOf");
+	String uril= base.getPropertyValue("uril");
+	String tempValue = base.getPropertyValue("tempValue");
+	String cName = base.getPropertyValue("cName");
+	
+	@Test(description="API City Name validation from openweathemap.com")
+	public void openWeatherCityNameTest() throws IOException {		
 
-	@Test(groups="api",description="API Test from openweathemap.com")
-	public void openWeatherTemperatureTest() throws IOException {		
-		String key = base.getPropertyValue("key");
-		String valueUnit = base.getPropertyValue("valueUnit");
-		String cityName = base.getPropertyValue("cityName");
-		String getDataOf = base.getPropertyValue("getDataOf");
-		String uril= base.getPropertyValue("uril");
-		String tempValue = base.getPropertyValue("tempValue");
 	
 		RestAssured.baseURI =uril ;
 
@@ -59,13 +61,9 @@ public class APITest{
 
 		log.info(response);
 		JsonPath js = new JsonPath(response);
-		String tempV = js.getString(tempValue);
+		String getCName = js.getString(cName);
 		String city = base.getCityName();
-		String newName = "API_"+city;
-		excel.writeExcel(newName, tempV,"WeatherAPI");
+		Assert.assertEquals(getCName,city);
 	}
-
-	
-	
 	
 }

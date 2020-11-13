@@ -147,8 +147,8 @@ public class BaseClass {
 			// log.error("Driver not present, please look into");
 		}
 		String url = getPropertyValue("urlName");
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
 		driver.get(url);
 		log.info("Exit from initiliaze() method =============== ");
 	}
@@ -265,12 +265,14 @@ public class BaseClass {
 	 * 
 	 * @param cityname
 	 * @param locatorname
+	 * @throws InterruptedException 
 	 */
-	public void sendTextValue(String cityname, String locatorname) {
+	public void sendTextValue(String cityname, String locatorname) throws InterruptedException {
 		log.info("Inside sendTextValue() method =============== ");
 		String cityName = prop.getProperty(cityname);
 		log.info("Given city Name :: " + cityName);
 		getElement(locatorname).sendKeys(cityName);
+		Thread.sleep(1500);
 		log.info("Exit from sendTextValue() method =============== ");
 	}
 
@@ -282,6 +284,7 @@ public class BaseClass {
 	public void selectElement(String name) {
 		log.info("Inside selectElement() method =============== ");
 		boolean value = isCheckBoxSelected(name);
+		log.info("checkbox value is :: "+value);
 		if (value == false) {
 			getElement(name).click();
 		}
@@ -476,6 +479,7 @@ public class BaseClass {
 		log.info("Inside wait() method =============== ");
 		for (int i = 0; i < timeToWait; i++) {
 			Thread.sleep(1000);
+			log.info("Wait for element to visible");
 			if (getElement(name).isDisplayed()) {
 				break;
 			}
@@ -493,6 +497,7 @@ public class BaseClass {
 		return city;
 	}
 
+	
 	@AfterTest
 	public void exit() {
 		driver.quit();
